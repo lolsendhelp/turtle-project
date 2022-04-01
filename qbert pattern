@@ -1,7 +1,12 @@
 from turtle import *
+import turtle
 speed(100)
+setup(800,800)
 
 colours1 = []
+
+x = 400
+x1 = turtle.xcor()
 
 for i in range(3):
     colours = input("Please say the colours you want: ")
@@ -38,11 +43,15 @@ def cube(colour1, colour2, colour3):
     left(70)
     forward(50)
     end_fill()
-        
-cube(colours1[0], colours1[1], colours1[2])
-right(90)
-cube(colours1[0], colours1[1], colours1[2])
-right(90)
-cube(colours1[0], colours1[1], colours1[2])
+    
+    right(90)
+   
+penup()
+setpos(-400,380)
+pendown()
+
+while x1 < x:
+    cube(colours1[0], colours1[1], colours1[2])
+    x1 = turtle.xcor()
 
 exitonclick()
