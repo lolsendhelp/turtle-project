@@ -1,0 +1,48 @@
+from turtle import *
+speed(100)
+
+colours1 = []
+
+for i in range(3):
+    colours = input("Please say the colours you want: ")
+    colours1.append(colours)
+
+def cube(colour1, colour2, colour3):
+    color(colour1)
+    begin_fill()
+    left(20)
+    forward(50)
+    right(40)
+    forward(50)
+    right(140)
+    forward(50)
+    right(40)
+    forward(50)
+    end_fill()
+    
+    color(colour2)
+    begin_fill()
+    left(110)
+    forward(50)
+    left(70)
+    forward(50)
+    left(110)
+    forward(50)
+    end_fill()
+    
+    color(colour3)
+    begin_fill()
+    backward(50)
+    right(70)
+    forward(50)
+    left(70)
+    forward(50)
+    end_fill()
+        
+cube(colours1[0], colours1[1], colours1[2])
+right(90)
+cube(colours1[0], colours1[1], colours1[2])
+right(90)
+cube(colours1[0], colours1[1], colours1[2])
+
+exitonclick()
