@@ -193,8 +193,8 @@ if user_Choice == "row":
     row_one()
     
 elif user_Choice == "cubes":
+    setup(850,800)
     colours1 = []
-
     bgcolor("black")
 
     for i in range(3):
