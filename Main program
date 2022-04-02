@@ -1,4 +1,5 @@
 from turtle import *
+import turtle
 speed(1000000000000)
 setup(800,800)
 
@@ -9,6 +10,40 @@ def triangle_Spiral(colour):
     
     forward(length + 20)
     right(121)
+    
+def cube(colour1, colour2, colour3):
+    color(colour1)
+    begin_fill()
+    left(20)
+    forward(50)
+    right(40)
+    forward(50)
+    right(140)
+    forward(50)
+    right(40)
+    forward(50)
+    end_fill()
+    
+    color(colour2)
+    begin_fill()
+    left(110)
+    forward(50)
+    left(70)
+    forward(50)
+    left(110)
+    forward(50)
+    end_fill()
+    
+    color(colour3)
+    begin_fill()
+    backward(50)
+    right(70)
+    forward(50)
+    left(70)
+    forward(50)
+    end_fill()
+    
+    right(90)
     
 def quarter_circle(colour):
     penup()
@@ -140,14 +175,11 @@ def row_one():
 
 length = 1
 colours = ["blue", "yellow", "red"]
-
-colours = ["blue", "yellow", "red"]
-
 startingX = int(-(400/2)+10)
 startingY = int((400/2)-10)
 
-print("would you like multiple rows of different shapes or a triangle spiral?")
-user_Choice = input("Type row or spiral: ")
+print("row, spiral or cubes?")
+user_Choice = input("Type row, spiral or cubes: ")
     
 if user_Choice == "row":
     penup()
@@ -159,6 +191,42 @@ if user_Choice == "row":
     bgcolor("black")
     
     row_one()
+    
+elif user_Choice == "cubes":
+    colours1 = []
+
+    bgcolor("black")
+
+    for i in range(3):
+        colours = input("Please say the colours you want: ")
+        colours1.append(colours)
+        
+    penup()
+    setpos(-425,380)
+    pendown()
+
+    
+    for i in range(6):
+
+        for i in range(9):
+            cube(colours1[0], colours1[1], colours1[2])
+    
+        x = turtle.xcor()
+        y = turtle.ycor()
+
+        penup()
+        setpos(x-895,y-66)
+        pendown()
+
+        for i in range(10):
+            cube(colours1[0], colours1[1], colours1[2])
+
+        x = turtle.xcor()
+        y = turtle.ycor()
+
+        penup()
+        setpos(x-890,y-64)
+        pendown()
 
 elif user_Choice == "spiral":
     canvas_Size = int(input("What size would you like the canvas to be?: "))
