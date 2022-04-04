@@ -310,7 +310,7 @@ def row_three():
     left(90)
     pendown()
 
-colours = ["blue", "yellow", "red"]
+colours = []
 
 print("row, spiral or cubes?")
 user_Choice = input("Type row, spiral or cubes: ")
@@ -323,6 +323,10 @@ if user_Choice == "row":
     pendown()
     
     bgcolor("black")
+    
+    for i in range(3):
+        row_colours = input("Please type the colour you want: ")
+        colours.append(row_colours)
     
     for i in range(6):
         row_one()
