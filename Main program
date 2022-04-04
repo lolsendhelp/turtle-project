@@ -45,6 +45,15 @@ def cube(colour1, colour2, colour3):
     
     right(90)
     
+def square(colour):
+    color(colour)
+    begin_fill()
+    for i in range(4):
+        forward(20)
+        right(90)
+    forward(20)
+    end_fill()
+    
 def quarter_circle(colour):
     penup()
     forward(20)
@@ -164,6 +173,55 @@ def reverse_oval(colour):
     penup()
     forward(20)
     pendown()
+    
+def upside_down_triangle(colour):
+    color(colour)
+    begin_fill()
+    forward(20)
+    right(90)
+    forward(20)
+    right(90+45)
+    forward(20)
+    end_fill()
+    
+    penup()
+    forward(10)
+    right(90+45)
+    forward(20)
+    pendown()
+    
+def upside_down_quarter_circle(colour):
+    penup()
+    forward(20)
+    pendown()
+    
+    right(90)
+    quarter_circle(colour)
+    
+    penup()
+    right(180)
+    forward(20)
+    right(90)
+    pendown()
+
+def reverse_upside_down_quarter_circle(colour):
+    penup()
+    forward(20)
+    right(90)
+    forward(20)
+    left(90)
+    pendown()
+    
+    right(180)
+    quarter_circle(colour)
+    
+    penup()
+    right(180)
+    forward(20)
+    left(90)
+    forward(20)
+    right(90)
+    pendown()
 
 def row_one():
     upright_triangle(colours[2])
@@ -172,25 +230,105 @@ def row_one():
     reverse_quarter_circle(colours[1])
     reverse_oval(colours[1])
     reverse_upright_triangle(colours[2])
+    upside_down_triangle(colours[2])
+    reverse_oval(colours[1])
+    upside_down_quarter_circle(colours[1])
+    reverse_quarter_circle(colours[1])
+    reverse_oval(colours[1])
+    reverse_upright_triangle(colours[2])
+    upright_triangle(colours[2])
+    oval(colours[1])
+    quarter_circle(colours[1])
+    reverse_quarter_circle(colours[1])
+    reverse_oval(colours[1])
+    reverse_upright_triangle(colours[2])
+    upside_down_triangle(colours[2])
+    reverse_oval(colours[1])
+    
+    penup()
+    backward(399)
+    right(90)
+    forward(22)
+    left(90)
+    pendown()
+    
+def row_two():
+    square(colours[1])
+    reverse_upside_down_quarter_circle(colours[0])
+    upside_down_quarter_circle(colours[2])
+    reverse_upside_down_quarter_circle(colours[2])
+    upside_down_quarter_circle(colours[0])
+    square(colours[1])
+    reverse_upside_down_quarter_circle(colours[0])
+    oval(colours[1])
+    upside_down_quarter_circle(colours[2])
+    reverse_upside_down_quarter_circle(colours[2])
+    upside_down_quarter_circle(colours[0])
+    square(colours[1])
+    square(colours[1])
+    reverse_upside_down_quarter_circle(colours[0])
+    upside_down_quarter_circle(colours[2])
+    reverse_upside_down_quarter_circle(colours[2])
+    upside_down_quarter_circle(colours[0])
+    square(colours[1])
+    reverse_upside_down_quarter_circle(colours[0])
+    oval(colours[1])
+    
+    penup()
+    backward(399)
+    right(90)
+    forward(22)
+    left(90)
+    pendown()
+    
+def row_three():
+    quarter_circle(colours[0])
+    oval(colours[1])
+    quarter_circle(colours[2])
+    reverse_quarter_circle(colours[2])
+    oval(colours[1])
+    reverse_quarter_circle(colours[0])
+    square(colours[1])
+    quarter_circle(colours[0])
+    quarter_circle(colours[2])
+    reverse_quarter_circle(colours[2])
+    oval(colours[1])
+    reverse_quarter_circle(colours[0])
+    quarter_circle(colours[0])
+    oval(colours[1])
+    quarter_circle(colours[2])
+    reverse_quarter_circle(colours[2])
+    oval(colours[1])
+    quarter_circle(colours[0])
+    square(colours[1])
+    quarter_circle(colours[0]) 
+    
+    penup()
+    backward(399)
+    right(90)
+    forward(22)
+    left(90)
+    pendown()
 
-length = 1
 colours = ["blue", "yellow", "red"]
-startingX = int(-(400/2)+10)
-startingY = int((400/2)-10)
 
 print("row, spiral or cubes?")
 user_Choice = input("Type row, spiral or cubes: ")
     
 if user_Choice == "row":
-    penup()
-    setpos(startingX,startingY)
-    pendown()
+    setup(405,400)
     
-    setup(400,400)
+    penup()
+    setpos(-202,200)
+    pendown()
     
     bgcolor("black")
     
-    row_one()
+    for i in range(6):
+        row_one()
+        row_two()
+        row_three()
+    
     
 elif user_Choice == "cubes":
     setup(850,800)
@@ -198,8 +336,8 @@ elif user_Choice == "cubes":
     bgcolor("black")
 
     for i in range(3):
-        colours = input("Please say the colours you want: ")
-        colours1.append(colours)
+        cube_colours = input("Please say the colours you want: ")
+        colours1.append(cube_colours)
         
     penup()
     setpos(-425,380)
@@ -227,6 +365,7 @@ elif user_Choice == "cubes":
         penup()
         setpos(x-890,y-64)
         pendown()
+        
 
 elif user_Choice == "spiral":
     canvas_Size = int(input("What size would you like the canvas to be?: "))
