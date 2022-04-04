@@ -3,6 +3,8 @@ import turtle
 speed(1000000000000)
 setup(800,800)
 
+#triangle spiral pattern function
+#this function is for the triangle spiral pattern and is not for the 3d cube pattern or the row pattern 
 def triangle_Spiral(colour):
     
     bgcolor("black")
@@ -11,6 +13,8 @@ def triangle_Spiral(colour):
     forward(length + 20)
     right(121)
     
+#cube pattern function
+#this function is for the 3d cube pattern and is not used for the row of shapes pattern or triangle spiral pattern 
 def cube(colour1, colour2, colour3):
     color(colour1)
     begin_fill()
@@ -45,6 +49,8 @@ def cube(colour1, colour2, colour3):
     
     right(90)
     
+#row pattern function
+#this function is for the square shape used in the row of shapes pattern
 def square(colour):
     color(colour)
     begin_fill()
@@ -54,6 +60,8 @@ def square(colour):
     forward(20)
     end_fill()
     
+#row pattern function
+#this function is the base quarter circle with a radius of 20 and faces to the right side 
 def quarter_circle(colour):
     penup()
     forward(20)
@@ -78,6 +86,8 @@ def quarter_circle(colour):
     right(90)
     pendown()
     
+#row pattern function
+#this is the reverse of the base quarter circle and faces to the left instead of the right
 def reverse_quarter_circle(colour):
     penup()
     right(90)
@@ -103,6 +113,8 @@ def reverse_quarter_circle(colour):
     right(90)
     pendown()
     
+#row pattern function
+#this is the base triangle function it has a length of 20 pixels and faces to the left 
 def upright_triangle(colour):
     color(colour)
     penup()
@@ -119,6 +131,8 @@ def upright_triangle(colour):
     right(45)
     end_fill()
     
+#row pattern function
+#this is the reverse of the base triangle function and faces to the right instead of the left 
 def reverse_upright_triangle(colour):
     color(colour)
     
@@ -142,6 +156,8 @@ def reverse_upright_triangle(colour):
     right(90)
     pendown()
     
+#row pattern function
+#this is the oval function and faces to the right and has a length of about 20 pixels
 def oval(colour):
     right(90)
     forward(20)
@@ -162,6 +178,8 @@ def oval(colour):
     right(90)
     pendown()
     
+#row pattern function
+#this is the reverse oval function and faces to the left instead of the right 
 def reverse_oval(colour):
     for i in range(2):
         color(colour)
@@ -174,6 +192,8 @@ def reverse_oval(colour):
     forward(20)
     pendown()
     
+#row pattern function
+#this is the upside down triangle function and it is the same triangle used before however it is upside down and faces to the left 
 def upside_down_triangle(colour):
     color(colour)
     begin_fill()
@@ -190,6 +210,8 @@ def upside_down_triangle(colour):
     forward(20)
     pendown()
     
+#row pattern function
+#this is the upside down quarter circle function and is the same as the quarter circle above however it is upside down and faces to the right 
 def upside_down_quarter_circle(colour):
     penup()
     forward(20)
@@ -203,7 +225,9 @@ def upside_down_quarter_circle(colour):
     forward(20)
     right(90)
     pendown()
-
+    
+#row pattern function
+#this is the upside down quarter circle but faces to the left instead of the right 
 def reverse_upside_down_quarter_circle(colour):
     penup()
     forward(20)
@@ -223,6 +247,8 @@ def reverse_upside_down_quarter_circle(colour):
     right(90)
     pendown()
 
+#there are 3 rows in this pattern that loop 6 times. This function uses the shapes marked above as the row pattern shapes and creates the first row of the pattern
+#row one of the pattern has all the shapes of row one and uses the colours list to colour in the shape
 def row_one():
     upright_triangle(colours[2])
     oval(colours[1])
@@ -245,6 +271,7 @@ def row_one():
     upside_down_triangle(colours[2])
     reverse_oval(colours[1])
     
+    #going back 399 pixels and down 22 to get into position for the next row
     penup()
     backward(399)
     right(90)
@@ -252,6 +279,7 @@ def row_one():
     left(90)
     pendown()
     
+#this is row two of the patttern and has a few more shapes not used in row one 
 def row_two():
     square(colours[1])
     reverse_upside_down_quarter_circle(colours[0])
@@ -274,6 +302,7 @@ def row_two():
     reverse_upside_down_quarter_circle(colours[0])
     oval(colours[1])
     
+    #going back 399 pixels and down 22 to get into position for the next row
     penup()
     backward(399)
     right(90)
@@ -281,6 +310,7 @@ def row_two():
     left(90)
     pendown()
     
+#this is row three and last row of the pattern and will be looped with the other rows to finish the pattern
 def row_three():
     quarter_circle(colours[0])
     oval(colours[1])
@@ -303,6 +333,7 @@ def row_three():
     square(colours[1])
     quarter_circle(colours[0]) 
     
+    #going back 399 pixels and down 22 to get into position for the next row
     penup()
     backward(399)
     right(90)
@@ -310,74 +341,108 @@ def row_three():
     left(90)
     pendown()
 
+#empty list which will be used to be added to later on when we ask the user for the three colours they want to use for the row
 colours = []
 
+#this variable is used for the triangle spiral pattern and is for how far forward the turtle will travel when drawing sides of the triangle and will be increased upon later
+length = 1
+
+#asks the user what pattern they want whether it's the row pattern, spiral pattern or cube pattern
 print("row, spiral or cubes?")
+#this is variable we use in the if elif else statements to decide which pattern what pattern the user wants us to draw
 user_Choice = input("Type row, spiral or cubes: ")
     
+#this if statement draws the row pattern if the user decides to draw it
 if user_Choice == "row":
     setup(405,400)
     
+    #sets up to start drawing the row pattern at the top left corner of the canvas
     penup()
     setpos(-202,200)
     pendown()
     
     bgcolor("black")
     
+    #this for loop asks 3 times what colour you want to use and takes those inputs and puts those inputs into the empty colours list we made earlier so we can use that list 
+    #to colour in the shapes for the row pattern
     for i in range(3):
         row_colours = input("Please type the colour you want: ")
         colours.append(row_colours)
     
+    #this for loop draws the three rows defined above and does it 6 times until the canvas is filled
     for i in range(6):
         row_one()
         row_two()
         row_three()
     
-    
+#this elif statement is for the 3d cube pattern  
 elif user_Choice == "cubes":
     setup(850,800)
+    
+    #empty list so that we can add the colour inputs later 
     colours1 = []
     bgcolor("black")
 
+    #this for loop is so that we can add the colour inputs to the colours1 empty list we created later and use it to colour in the sides of the cube
     for i in range(3):
         cube_colours = input("Please say the colours you want: ")
         colours1.append(cube_colours)
         
+    #this setpos is so we can draw the next row of cubes and fit them as nicely as we can into the previous row 
     penup()
     setpos(-425,380)
     pendown()
 
-    
+    #this for loop is to draw the rows of 3d cubes
     for i in range(6):
 
+        #this draws the first row of cubes
         for i in range(9):
+            #the three arguments here are for the colours for each side of the cube
             cube(colours1[0], colours1[1], colours1[2])
-    
+
+        #these x and y variables will store the current x and y coordinates of the turtle after the first row of cubes is finished drawing so we can use it later to position 
+        #ourselves for the next row of cubes
         x = turtle.xcor()
         y = turtle.ycor()
 
+        #this setpos uses the x and y coordinates that were gotten before and uses them to position for the next row of cubes
         penup()
         setpos(x-895,y-66)
         pendown()
 
+        #this for loop is to draw the next row of cubes
         for i in range(10):
             cube(colours1[0], colours1[1], colours1[2])
 
+        #these x and y variables will find the current x and y coordinates so we can use them to position ourselves for the next row
         x = turtle.xcor()
         y = turtle.ycor()
 
+        #this uses the x and y variables and positions ourselves for the next row of cubes 
         penup()
         setpos(x-890,y-64)
         pendown()
-        
 
+#this elif statement is for the triangle spiral pattern and draws the spiral pattern
 elif user_Choice == "spiral":
+    #this variable asks what canvas size you want the canvas to be and once you input the integer it uses that number for the x and y length of the canvas to create a square canvas
     canvas_Size = int(input("What size would you like the canvas to be?: "))
     setup(canvas_Size,canvas_Size)
-    circle_Colour = input("What colour would you like the spiral to be? ")
     
+    #this just asks what colour you want the spiral to be and uses it to colour the spiral
+    spiral_Colour = input("What colour would you like the spiral to be? ")
+    
+    #this while loop continues until the length variable is equal or larger than 70% of the canvas 
     while length <= (canvas_Size * 0.70):
-        triangle_Spiral(circle_Colour)
+        #this calls the triangle spiral function that was defined at the top of the program and uses the spiral_Colour variable that was set earlier
+        triangle_Spiral(spiral_Colour)
+        #this uses the length variable defined earlier and adds 1 to it every time the loop restarts so it gets progressively larger each time
         length = length + 1 
+    
+    #this simply gets the turtle out of the way so it just looks better and nothing else 
+    penup()
+    setpos(100000,50000)
+    pendown()
 
 exitonclick()
